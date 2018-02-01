@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Cat Clicker</title>
+    <style>
+      img.cat { max-width: 500px; }
+    </style>
+  </head>
+  <body>
+
+    <ul id="catsList">
+    </ul>
+
+    <div id="cat"></div>
+
+    <script>
+      const cats = [{
+        name: 'Lily',
+        photo: 'lily.jpg',
+        clicks: 0
+      },
+      {
+        name: 'Blurry',
+        photo: 'blurry.jpg',
+        clicks: 0
+      },
+      {
+        name: 'Maeby',
+        photo: 'maeby.jpg',
+        clicks: 0
+      },
+      {
+        name: 'Photo',
+        photo: 'photo.jpg',
+        clicks: 0
+      },
+      {
+        name: 'Kitty',
+        photo: 'kitty.jpg',
+        clicks: 0
+      },
+      ];
+
+      let listHtml = '';
+
+      let catHtml = '';
+
+      cats.forEach(function(cat, i){
+        listHtml += `
+        <li><a href="#" data-id="${i}">
+          ${cat.name}
+          </a>
+          </li>
+        </div>
+        `;
+      });
+      document.querySelector('#catsList').innerHTML = listHtml;
+
+      const catNodes = document.querySelectorAll('.cat');
+      const catClickNodes = document.querySelectorAll('.cat-clicks');
+
+      catNodes.forEach(function(cat){
+        cat.addEventListener('click', function(e){
+          console.log(e.target.dataset.id);
+          cats[e.target.dataset.id].clicks++;
+          catClickNodes[e.target.dataset.id].innerHTML = cats[e.target.dataset.id].clicks
+          // clicks++;
+          // catClicks.textContent = clicks;
+        })
+      });
+
+      function loadCat(id) {
+        const cat = document.querySelector('#cat');
+        cat.innerHTML = buildCatHtml(id);
+        const catImg = document.querySelector('#cat img');
+        const catClicks = document.querySelector('#cat .cat-clicks');
+        catImg.addEventListener('click', function(e){
+          cats[e.target.dataset.id].clicks++;
+          catClicks.innerHTML = cats[e.target.dataset.id].clicks
+        })
+      }
+
+      function buildCatHtml(id) {
+        return `
+          <p>${cats[id].name}</p>
+          <img class="cat" data-id="${id}" src="img/${cats[id].photo}" alt="cat" />
+          <p>Clicks: <span class="cat-clicks" data-id="${id}">${cats[id].clicks}</span></p>
+        `
+      }
+
+      const catLinks = document.querySelectorAll('#catsList a');
+      catLinks.forEach(function(link){
+        link.addEventListener('click', function(e){
+            e.preventDefault();
+            loadCat(e.target.dataset.id);
+        });
+      });
+    </script>
+  </body>
+</html>
