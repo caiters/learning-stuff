@@ -76,6 +76,9 @@ const adminView = {
     toggleWindow() {
         document.querySelector('.admin-window').classList.toggle('admin-window--hidden')
     },
+    closeWindow() {
+        document.querySelector('.admin-window').classList.add('admin-window--hidden')
+    },
     load(cat, id) {
         document.querySelector('#name').value = cat.name;
         document.querySelector('#image').value = cat.photo;
@@ -134,6 +137,7 @@ const catDetailView = {
         catImg.addEventListener('click', function(e){
             octopus.catClick(e.target.dataset.id)
         });
+        adminView.closeWindow();
     },
     buildCatHtml(cat, id) {
         return `
