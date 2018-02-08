@@ -1,1 +1,3 @@
 img.cat { max-width: 500px; }
+.admin-wrapper--hidden { display: none; }
+.admin-window--hidden { display: none; }

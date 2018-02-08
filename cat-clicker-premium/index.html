@@ -11,6 +11,27 @@
 
     <div id="cat"></div>
 
+    <div id="admin" class="admin-wrapper admin-wrapper--hidden">
+      <button id="adminBtn">Admin</button>
+      <div class="admin-window admin-window--hidden">
+        <h1>Administration</h1>
+        <div>
+          <label for="name">Cat Name</label>
+          <input type="text" id="name" name="name">
+        </div>
+        <div>
+          <label for="image">Cat Image</label>
+          <input type="text" id="image" name="image">
+        </div>
+        <div>
+          <label for="clicks">Cat Clicks</label>
+          <input type="text" id="clicks" name="clicks">
+        </div>
+        <button type="button" id="adminCancel">Cancel</button>
+        <button type="button" id="adminSubmit">Submit</button>
+      </div>
+    </div>
+
     <script type="text/javascript" src="app.js"></script>
   </body>
 </html>
